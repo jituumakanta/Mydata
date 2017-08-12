@@ -43,7 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myview> {
        // holder.textView4.setText(allData.get(position).getDownload_link());
         Glide.with(context)
                 .load(allData.get(position).getImage_link())
-                .placeholder(R.drawable.ic_menu_camera)
+                .placeholder(R.drawable.ic_menu_send)
                 .error(R.drawable.ic_menu_camera)
                 .into(holder.imageView2);
 
