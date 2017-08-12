@@ -34,6 +34,7 @@
         android:layout_width="132dp"
         android:layout_height="45dp"
         android:text="down"
+        android:clickable="true"
         tools:layout_conversion_absoluteX="3dp"
         tools:layout_conversion_absoluteY="83dp"
         tools:layout_conversion_absoluteWidth="244dp"

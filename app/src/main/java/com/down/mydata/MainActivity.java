@@ -233,9 +233,10 @@ public class MainActivity extends AppCompatActivity
                 subcategorybean.setDownload_link(download_link);
 
                 allData.add(subcategorybean);
+                spinner.setVisibility(View.GONE);
             }
             adapter.notifyDataSetChanged();
-            spinner.setVisibility(View.GONE);
+
             // Toast.makeText(getApplicationContext(),allSampleData,Toast.LENGTH_LONG).show();
             System.out.println("objjj" + allData);
         } catch (JSONException e) {

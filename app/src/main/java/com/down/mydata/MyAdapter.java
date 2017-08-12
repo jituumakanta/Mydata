@@ -40,7 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myview> {
     @Override
     public void onBindViewHolder(MyAdapter.myview holder, final int position) {
         holder.textView2.setText(allData.get(position).getContent_name());
-       // holder.textView4.setText(allData.get(position).getDownload_link());
+        // holder.textView4.setText(allData.get(position).getDownload_link());
         Glide.with(context)
                 .load(allData.get(position).getImage_link())
                 .placeholder(R.drawable.ic_menu_send)
@@ -48,14 +48,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myview> {
                 .into(holder.imageView2);
 
 
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String urlString=allData.get(position).getDownload_link();
-                Toast.makeText(context,urlString,Toast.LENGTH_LONG).show();
-                System.out.println("urlString"+urlString);
-                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse(urlString));
+                String urlString = allData.get(position).getDownload_link();
+                Toast.makeText(context, urlString, Toast.LENGTH_LONG).show();
+                System.out.println("urlString" + urlString);
+
+
+                Intent i = new Intent(context, Download.class);
+                i.putExtra("url", urlString);
+                context.startActivity(i);
+               /* Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse(urlString));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setPackage("com.android.chrome");
                 try {
@@ -64,7 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myview> {
                     // Chrome browser presumably not installed so allow user to choose instead
                     intent.setPackage(null);
                     context.startActivity(intent);
-                }
+                }*/
 
             }
         });
@@ -72,7 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myview> {
 
     @Override
     public int getItemCount() {
-        System.out.println("size"+allData.size());
+        System.out.println("size" + allData.size());
         return allData.size();
     }
 
@@ -82,9 +86,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myview> {
 
         public myview(View itemView) {
             super(itemView);
-            textView2=(TextView) itemView.findViewById(R.id.textView2);
-          //  textView4=(TextView) itemView.findViewById(R.id.textView4);
-            imageView2=(ImageView) itemView.findViewById(R.id.imageView2);
+            textView2 = (TextView) itemView.findViewById(R.id.textView2);
+            //  textView4=(TextView) itemView.findViewById(R.id.textView4);
+            imageView2 = (ImageView) itemView.findViewById(R.id.imageView2);
 
         }
     }
