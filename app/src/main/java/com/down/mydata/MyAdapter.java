@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -51,12 +52,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myview> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent newintent = new Intent();
-                newintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                newintent.setClass(context, download.class);
-                newintent.putExtra("endpoint1", allData.get(position).getDownload_link());
-                context.startActivity(newintent);*/
                 String urlString=allData.get(position).getDownload_link();
+                Toast.makeText(context,urlString,Toast.LENGTH_LONG).show();
+                System.out.println("urlString"+urlString);
                 Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse(urlString));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setPackage("com.android.chrome");
@@ -85,7 +83,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myview> {
         public myview(View itemView) {
             super(itemView);
             textView2=(TextView) itemView.findViewById(R.id.textView2);
-            textView4=(TextView) itemView.findViewById(R.id.textView4);
+          //  textView4=(TextView) itemView.findViewById(R.id.textView4);
             imageView2=(ImageView) itemView.findViewById(R.id.imageView2);
 
         }

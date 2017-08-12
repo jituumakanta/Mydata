@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity
 
     String id, content_name, domain_name, image_link, catagory, download_link;
     EditText search;
-
+    private ProgressBar spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +91,8 @@ public class MainActivity extends AppCompatActivity
 
         search = (EditText) findViewById(R.id.editText_InputSearch);
         Button b=(Button)findViewById(R.id.button);
+        spinner=(ProgressBar)findViewById(R.id.progressBar);
+        spinner.setVisibility(View.GONE);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,6 +165,7 @@ public class MainActivity extends AppCompatActivity
 
 
     private void getMovie(final String dataname) {
+        spinner.setVisibility(View.VISIBLE);
         allData.clear();
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, "http://bluedeserts.com/myand/get_movie.php", new com.android.volley.Response.Listener<String>() {
             @Override
@@ -231,6 +235,7 @@ public class MainActivity extends AppCompatActivity
                 allData.add(subcategorybean);
             }
             adapter.notifyDataSetChanged();
+            spinner.setVisibility(View.GONE);
             // Toast.makeText(getApplicationContext(),allSampleData,Toast.LENGTH_LONG).show();
             System.out.println("objjj" + allData);
         } catch (JSONException e) {
